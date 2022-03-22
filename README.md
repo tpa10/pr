@@ -3,7 +3,7 @@ This tree is to hold MY versions of the programs, notes, etc. from "Programming 
 In most cases the definition of "my version" is that I have added extensive comments to the
 programs, as I worked through the book and learned the rust language.
 
-These programs are made avaialbe AS IS, with no gurantee that they will do ANYTHING, such as
+These programs are made avaialbe AS IS, with no guarantee that they will do ANYTHING, such as
 compile, link, run, destroy, or not destroy your system.
 
 If you want/need something different I stgrongly suggest you buy the book:
