@@ -1,4 +1,4 @@
-This tree is to hold MY versions of the programs from:'
+This tree is to hold MY versions of the programs, notes, etc. from "Programming Rust"
 
 In most cases the definition of "my version" is that I have added extensive comments to the
 programs, as I worked through the book and learned the rust language.
@@ -12,7 +12,7 @@ If you want/need something different I stgrongly suggest you buy the book:
  Published by O'Reilly Media Inc. 
 and work through the examples yourself. 
 
-These programs were developed on MacBook Pro running macOS Big Sur (Version 11.2.2)
+These programs were developed on MacBook Pro running macOS Big Sur (Version 11.6.x)
 using version 1.53.0 of the rust compiler and tools.
  
 Installed cargo-edit 0.7.0 to make it easy to add/update crates in my environment.
