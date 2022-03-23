@@ -1,5 +1,58 @@
+/*
+ * Program takes arguments from the cmd line and tries to convert the
+ *  arguments into integers and return the gcd of all args.
+ *  ex:  hello 3 6 9 -> The greatest common divisor of [3 6 9] is 3
+ *
+ *  To run:  cargo run <number> <...>
+ *  or cargo build and execute the the binary.
+ *  To run the test func:  cargo test
+ */
+
+/* 
+ * Bring the "FromStr" and "env" traits into scope
+ *  (rust's version of "import" -golang/java- or
+ *      "include <some-library-header>" in C
+ */
+
+use std::str::FromStr;
+use std::env;
 fn main() {
-    println!("Hello, world!");
+
+    /*
+     * Create a mutable vector to hold our cmd line args
+     *   Vectors in rust are similiar to "slices" in golang
+     *   and std::vector in C++.  The vector type here is 
+     *   Vec<u64>, which is implicit by our usage of the vector.
+     *   (i.e. the compiler "figures it out" based on the program)
+     */
+    let mut numbers = Vec::new();
+
+    /*
+     * Iterate through the input args, pusing them onto our vector
+     * If the user gives us something that can't be translated into 
+     *  a 64 bit integer, scream real loud.
+     */
+    for arg in env::args().skip(1) {
+        numbers.push(u64::from_str(&arg).expect("error parsing argument"));
+    }
+
+    /* 
+     * No valid input?  Blow them a snotgram to stderr and exit
+     */
+    if numbers.len() == 0 {
+        eprintln!("Usage:  gcd NUMBER ...");
+        std::process::exit(1);
+    }
+
+    /*
+     * Range through our vector, checking for gcd
+     */
+    let mut d = numbers[0];
+    for m in &numbers[1..] {
+        d = gcd(d, *m);
+    }
+
+    println!("The greatest common divisor of {:?} is {}", numbers, d);
 }
 
 /*
@@ -7,7 +60,7 @@ fn main() {
  *  and returns an unsigned 64 bit int.
  *  The "mut" notation indicates a "mutable" variable.  the
  *      default is immutable.
- *  The assert! macro will cause the program to choke if either
+ *  The assert! macro will cause the program to spew (panic) if either
  *      input variable is 0.
  *
  *  The function returns the Greatest Common Divisor of the two
